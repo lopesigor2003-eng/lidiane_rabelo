@@ -1,117 +1,80 @@
 import { useState } from "react";
-import { ChevronLeft, ChevronRight, Maximize2, X } from "lucide-react";
+import { Maximize2, X, Image as ImageIcon } from "lucide-react";
 import { GALLERY_IMAGES } from "../data";
 
 export default function Gallery() {
-  const [currentIndex, setCurrentIndex] = useState(0);
   const [lightboxImage, setLightboxImage] = useState<string | null>(null);
-
-  const prevSlide = () => {
-    setCurrentIndex((prev) => (prev === 0 ? GALLERY_IMAGES.length - 1 : prev - 1));
-  };
-
-  const nextSlide = () => {
-    setCurrentIndex((prev) => (prev === GALLERY_IMAGES.length - 1 ? 0 : prev + 1));
-  };
 
   return (
     <section id="gallery" className="py-20 bg-brand-bg/50">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
-
-        {/* Carousel container with Neumorphism style */}
-        <div className="relative max-w-4xl mx-auto">
-          <div className="card-neo-flat p-4 sm:p-6 md:p-8">
-            
-            {/* Viewport */}
-            <div className="relative h-[400px] sm:h-[500px] md:h-[600px] w-full overflow-hidden rounded-2xl bg-brand-bg/40 border border-white/20 group">
-              {GALLERY_IMAGES.map((img, index) => (
-                <div
-                  key={img.id}
-                  className={`absolute inset-0 transition-all duration-700 ease-in-out transform flex items-center justify-center bg-brand-bg/10 ${
-                    index === currentIndex
-                      ? "opacity-100 scale-100 translate-x-0"
-                      : "opacity-0 scale-95 translate-x-full pointer-events-none"
-                  }`}
-                >
-                  <img
-                    src={img.url}
-                    alt={img.alt}
-                    loading="lazy"
-                    decoding="async"
-                    referrerPolicy="no-referrer"
-                    className="max-h-full max-w-full object-contain select-none"
-                  />
-                  
-                  {/* Expand option button */}
-                  <button
-                    onClick={() => setLightboxImage(img.url)}
-                    aria-label="Expandir foto do consultório"
-                    className="absolute top-4 right-4 p-3 rounded-xl bg-black/40 text-white/90 hover:bg-black/60 backdrop-blur-sm transition-colors focus:ring-2 focus:ring-brand-gold/50 focus:outline-none animate-fade-in"
-                  >
-                    <Maximize2 size={16} />
-                  </button>
-                </div>
-              ))}
-
-              {/* Navigation Arrows inside viewport (hidden on small screens, shown on hover/large) */}
-              <button
-                onClick={prevSlide}
-                aria-label="Foto anterior do consultório"
-                className="absolute left-4 top-1/2 -translate-y-1/2 p-2.5 rounded-xl bg-white/70 hover:bg-white text-brand-dark shadow-md transition-all focus:outline-none focus:ring-2 focus:ring-brand-gold z-10"
-              >
-                <ChevronLeft size={20} />
-              </button>
-
-              <button
-                onClick={nextSlide}
-                aria-label="Próxima foto do consultório"
-                className="absolute right-4 top-1/2 -translate-y-1/2 p-2.5 rounded-xl bg-white/70 hover:bg-white text-brand-dark shadow-md transition-all focus:outline-none focus:ring-2 focus:ring-brand-gold z-10"
-              >
-                <ChevronRight size={20} />
-              </button>
-            </div>
-
-            {/* Bottom Indicators & Manual Thumbnails */}
-            <div className="mt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-              {/* Thumbnail strip */}
-              <div className="flex gap-2.5 overflow-x-auto py-1">
-                {GALLERY_IMAGES.map((img, idx) => (
-                  <button
-                    key={img.id}
-                    onClick={() => setCurrentIndex(idx)}
-                    aria-label={`Visualizar foto ${idx + 1}`}
-                    className={`relative w-16 h-10 sm:w-20 sm:h-12 rounded-lg overflow-hidden flex-shrink-0 transition-all focus:outline-none ${
-                      idx === currentIndex
-                        ? "ring-2 ring-brand-gold scale-105 border-transparent"
-                        : "opacity-60 hover:opacity-90 border border-brand-dark/10"
-                    }`}
-                  >
-                    <img
-                      src={img.url}
-                      alt={`Miniatura ${idx + 1}`}
-                      className="w-full h-full object-cover"
-                      referrerPolicy="no-referrer"
-                    />
-                  </button>
-                ))}
-              </div>
-
-              {/* Indicator dots */}
-              <div className="flex items-center gap-2">
-                {GALLERY_IMAGES.map((_, idx) => (
-                  <button
-                    key={idx}
-                    onClick={() => setCurrentIndex(idx)}
-                    aria-label={`Ir para a foto ${idx + 1}`}
-                    className={`h-2 rounded-full transition-all focus:outline-none ${
-                      idx === currentIndex ? "w-6 bg-brand-gold" : "w-2 bg-brand-dark/20 hover:bg-brand-dark/40"
-                    }`}
-                  />
-                ))}
-              </div>
-            </div>
-
+        
+        {/* Section Header */}
+        <div className="max-w-3xl mx-auto text-center mb-12 space-y-4">
+          <div className="inline-flex items-center gap-2 text-sm font-semibold tracking-wider text-brand-gold uppercase justify-center">
+            <span className="w-6 h-0.5 bg-brand-gold"></span>
+            O Consultório
+            <span className="w-6 h-0.5 bg-brand-gold"></span>
           </div>
+          
+          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-brand-dark">
+            Conheça Nosso Espaço
+          </h2>
+          
+          <p className="text-brand-dark/80 text-base sm:text-lg max-w-2xl mx-auto leading-relaxed">
+            Um ambiente acolhedor, sigiloso e planejado com carinho para proporcionar a você o máximo de conforto e bem-estar durante os atendimentos presenciais em Criciúma.
+          </p>
+        </div>
+
+        {/* Static Grid of Separate Photo Cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:gap-8 max-w-5xl mx-auto">
+          {GALLERY_IMAGES.map((img) => (
+            <div
+              key={img.id}
+              onClick={() => setLightboxImage(img.url)}
+              className="card-neo-flat p-3 sm:p-4 rounded-3xl hover:translate-y-[-4px] hover:shadow-neo-flat-hover transition-all duration-300 group cursor-pointer flex flex-col"
+            >
+              {/* Image Frame */}
+              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-brand-bg/40 border border-white/20">
+                <img
+                  src={img.url}
+                  alt={img.alt}
+                  loading="lazy"
+                  decoding="async"
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover select-none group-hover:scale-[1.03] transition-transform duration-500"
+                />
+                
+                {/* Micro-Interaction Overlay */}
+                <div className="absolute inset-0 bg-black/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                  <span className="px-4 py-2 rounded-xl bg-white/90 text-brand-dark text-xs font-semibold shadow-md flex items-center gap-1.5 transform scale-90 group-hover:scale-100 transition-transform duration-300 backdrop-blur-sm">
+                    <Maximize2 size={13} className="text-brand-gold" />
+                    Ampliar Imagem
+                  </span>
+                </div>
+
+                {/* Direct Action Button */}
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    setLightboxImage(img.url);
+                  }}
+                  aria-label="Expandir foto do consultório"
+                  className="absolute bottom-3 right-3 p-2.5 rounded-xl bg-black/40 text-white/95 hover:bg-black/60 backdrop-blur-sm transition-colors focus:ring-2 focus:ring-brand-gold/50 focus:outline-none"
+                >
+                  <Maximize2 size={14} />
+                </button>
+              </div>
+
+              {/* Caption */}
+              <div className="mt-3.5 px-1 flex-grow flex items-start gap-2.5">
+                <ImageIcon size={15} className="text-brand-gold flex-shrink-0 mt-0.5 opacity-85" />
+                <p className="text-xs sm:text-sm text-brand-dark/80 font-medium leading-relaxed">
+                  {img.alt}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
 
       </div>
