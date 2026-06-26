@@ -1,36 +1,6 @@
-import { useState } from "react";
-import {
-  Accessibility,
-  Building2,
-  CalendarDays,
-  Car,
-  HeartHandshake,
-  CheckCircle2,
-  Users,
-} from "lucide-react";
-import { SPECIALITIES } from "../data";
+import { CheckCircle2 } from "lucide-react";
 
 export default function Services() {
-  const [activeCategory, setActiveCategory] = useState<string>("all");
-
-  const categories = [
-    { id: "all", label: "Tudo", icon: <Users size={16} /> },
-    { id: "access", label: "Acessibilidade", icon: <Accessibility size={16} /> },
-    { id: "business", label: "Inclusão & Diversidade", icon: <HeartHandshake size={16} /> },
-    { id: "parking", label: "Estacionamento", icon: <Car size={16} /> },
-    { id: "planning", label: "Agendamento", icon: <CalendarDays size={16} /> },
-  ];
-
-  // Group specialities dynamically
-  const filteredSpecialities = SPECIALITIES.filter((item) => {
-    if (activeCategory === "all") return true;
-    if (activeCategory === "access" && item.category === "access") return true;
-    if (activeCategory === "business" && item.category === "business") return true;
-    if (activeCategory === "parking" && item.category === "parking") return true;
-    if (activeCategory === "planning" && item.category === "planning") return true;
-    return false;
-  });
-
   const clinicalScopes = [
     {
       title: "Autoestima & Autoconfiança",
@@ -72,7 +42,7 @@ export default function Services() {
         </div>
 
         {/* Clinical focus grid with Neumorphic elevation */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {clinicalScopes.map((scope, idx) => (
             <div
               key={idx}
@@ -93,77 +63,6 @@ export default function Services() {
               </div>
             </div>
           ))}
-        </div>
-
-        {/* Amenities, Accessibility, Infrastructure Block */}
-        <div className="card-neo-flat p-6 sm:p-10">
-          <div className="text-center mb-8">
-            <h3 className="font-serif text-2xl font-bold text-brand-dark mb-2">
-              Infraestrutura & Comodidades do Consultório
-            </h3>
-            <p className="text-sm text-brand-dark/70">
-              Certificação de acessibilidade e acolhimento para proporcionar a melhor experiência presencial possível.
-            </p>
-          </div>
-
-          {/* Filtering buttons with horizontal scrolling on mobile and centered layout on desktop */}
-          <div className="w-full overflow-x-auto scrollbar-none mb-8 -mx-4 px-4 sm:mx-0 sm:px-0">
-            <div className="flex items-center sm:justify-center gap-2.5 min-w-max sm:min-w-0 pb-1 sm:pb-0">
-              {categories.map((cat) => (
-                <button
-                  key={cat.id}
-                  onClick={() => setActiveCategory(cat.id)}
-                  aria-label={`Filtrar comodidades por ${cat.label}`}
-                  className={`flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all duration-300 focus:outline-none whitespace-nowrap select-none ${
-                    activeCategory === cat.id
-                      ? "btn-neo-pressed text-brand-gold border-brand-gold/30 ring-1 ring-brand-gold/10"
-                      : "btn-neo-flat text-brand-dark/80"
-                  }`}
-                >
-                  {cat.icon}
-                  <span>{cat.label}</span>
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Display grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {filteredSpecialities.map((item) => {
-              // Custom category icons
-              let icon = <CheckCircle2 size={16} className="text-brand-gold" />;
-              if (item.category === "access") icon = <Accessibility size={16} className="text-brand-gold" />;
-              if (item.category === "business") icon = <HeartHandshake size={16} className="text-brand-gold" />;
-              if (item.category === "parking") icon = <Car size={16} className="text-brand-gold" />;
-              if (item.category === "planning") icon = <CalendarDays size={16} className="text-brand-gold" />;
-
-              return (
-                <div
-                  key={item.id}
-                  className="flex items-start gap-3 p-3.5 sm:p-4 rounded-xl bg-brand-card/45 border border-white/30 hover:bg-brand-card transition-all"
-                >
-                  <div className="w-8 h-8 rounded-lg bg-brand-bg shadow-sm flex items-center justify-center flex-shrink-0 mt-0.5">
-                    {icon}
-                  </div>
-                  <span className="text-xs sm:text-sm text-brand-dark/85 font-medium leading-tight pt-1">
-                    {item.label}
-                  </span>
-                </div>
-              );
-            })}
-          </div>
-
-          {/* Quick Info Row */}
-          <div className="mt-8 pt-6 border-t border-brand-dark/10 flex flex-wrap justify-around gap-6 text-center">
-            <div className="flex items-center gap-2 text-xs sm:text-sm text-brand-dark/70">
-              <Building2 size={16} className="text-brand-gold" />
-              <span>Sala Comercial Climatizada e com Lavabo Privativo</span>
-            </div>
-            <div className="flex items-center gap-2 text-xs sm:text-sm text-brand-dark/70">
-              <CalendarDays size={16} className="text-brand-gold" />
-              <span>Agendamento Prévio Necessário</span>
-            </div>
-          </div>
         </div>
 
       </div>
