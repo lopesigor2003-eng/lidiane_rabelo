@@ -1,0 +1,6 @@
+{
+  "name": "Psicóloga Lidiane Rabelo",
+  "description": "Lidiane Rabelo, psicóloga clínica em Criciúma (CRP 12/15181), oferece psicoterapia corporal Reichiana para mulheres, focada em autoestima, ansiedade, depressão e sexualidade. Agende sua consulta!",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "Playfair Display", serif;
+  --font-sans: "Inter", sans-serif;
+  
+  --color-brand-bg: #F5F5DC;
+  --color-brand-card: #F0EAD6;
+  --color-brand-dark: #36200D;
+  --color-brand-gold: #B8860B;
+  
+  --shadow-neo-flat: 8px 8px 16px #D6CFB4, -8px -8px 16px #FFFFFF;
+  --shadow-neo-flat-hover: 12px 12px 20px #D6CFB4, -12px -12px 20px #FFFFFF;
+  --shadow-neo-pressed: inset 6px 6px 12px #D6CFB4, inset -6px -6px 12px #FFFFFF;
+  
+  --shadow-neo-flat-sm: 4px 4px 8px #D6CFB4, -4px -4px 8px #FFFFFF;
+  --shadow-neo-pressed-sm: inset 3px 3px 6px #D6CFB4, inset -3px -3px 6px #FFFFFF;
+  
+  --shadow-neo-flat-gold: 6px 6px 12px rgba(184, 134, 11, 0.25), -6px -6px 12px #FFFFFF;
+  --shadow-neo-pressed-gold: inset 4px 4px 8px rgba(184, 134, 11, 0.3), inset -4px -4px 8px #FFFFFF;
+}
+
+/* Custom styles and smooth scroll */
+html {
+  scroll-behavior: smooth;
+  background-color: #F5F5DC;
+  color: #36200D;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-brand-bg);
+  color: var(--color-brand-dark);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #F5F5DC;
+}
+::-webkit-scrollbar-thumb {
+  background: #F0EAD6;
+  border: 2px solid #F5F5DC;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B8860B;
+}
+
+/* Neumorphic button class */
+.btn-neo-flat {
+  background-color: var(--color-brand-card);
+  color: var(--color-brand-dark);
+  box-shadow: var(--shadow-neo-flat-sm);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-neo-flat:hover {
+  box-shadow: var(--shadow-neo-flat);
+  transform: translateY(-2px);
+}
+.btn-neo-flat:active {
+  box-shadow: var(--shadow-neo-pressed-sm);
+  transform: translateY(0);
+}
+
+.btn-neo-pressed {
+  background-color: var(--color-brand-card);
+  color: var(--color-brand-dark);
+  box-shadow: var(--shadow-neo-pressed-sm);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-neo-gold {
+  background-color: var(--color-brand-gold);
+  color: #FFFFFF;
+  box-shadow: var(--shadow-neo-flat-gold);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-neo-gold:hover {
+  filter: brightness(1.05);
+  box-shadow: 8px 8px 16px rgba(184, 134, 11, 0.25), -8px -8px 16px rgba(255, 255, 255, 0.9);
+  transform: translateY(-2px);
+}
+.btn-neo-gold:active {
+  box-shadow: var(--shadow-neo-pressed-gold);
+  transform: translateY(0);
+}
+
+.card-neo-flat {
+  background-color: var(--color-brand-card);
+  box-shadow: var(--shadow-neo-flat);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 1.5rem;
+}
+
+.card-neo-pressed {
+  background-color: var(--color-brand-card);
+  box-shadow: var(--shadow-neo-pressed);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 1.5rem;
+}
+
+.input-neo {
+  background-color: var(--color-brand-card);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: var(--shadow-neo-pressed-sm);
+  color: var(--color-brand-dark);
+  transition: all 0.3s ease;
+}
+.input-neo:focus {
+  outline: none;
+  box-shadow: var(--shadow-neo-flat-sm);
+  border-color: var(--color-brand-gold);
+}
