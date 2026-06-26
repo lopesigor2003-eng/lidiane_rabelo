@@ -10,15 +10,15 @@
   --color-brand-dark: #36200D;
   --color-brand-gold: #B8860B;
   
-  --shadow-neo-flat: 8px 8px 16px #D6CFB4, -8px -8px 16px #FFFFFF;
-  --shadow-neo-flat-hover: 12px 12px 20px #D6CFB4, -12px -12px 20px #FFFFFF;
-  --shadow-neo-pressed: inset 6px 6px 12px #D6CFB4, inset -6px -6px 12px #FFFFFF;
+  --shadow-neo-flat: 8px 8px 16px rgba(214, 207, 180, 0.75), -8px -8px 16px rgba(255, 255, 255, 0.95);
+  --shadow-neo-flat-hover: 12px 12px 20px rgba(214, 207, 180, 0.85), -12px -12px 20px rgba(255, 255, 255, 1);
+  --shadow-neo-pressed: inset 6px 6px 12px rgba(214, 207, 180, 0.75), inset -6px -6px 12px rgba(255, 255, 255, 0.95);
   
-  --shadow-neo-flat-sm: 4px 4px 8px #D6CFB4, -4px -4px 8px #FFFFFF;
-  --shadow-neo-pressed-sm: inset 3px 3px 6px #D6CFB4, inset -3px -3px 6px #FFFFFF;
+  --shadow-neo-flat-sm: 4px 4px 8px rgba(214, 207, 180, 0.65), -4px -4px 8px rgba(255, 255, 255, 0.9);
+  --shadow-neo-pressed-sm: inset 3px 3px 6px rgba(214, 207, 180, 0.65), inset -3px -3px 6px rgba(255, 255, 255, 0.9);
   
-  --shadow-neo-flat-gold: 6px 6px 12px rgba(184, 134, 11, 0.25), -6px -6px 12px #FFFFFF;
-  --shadow-neo-pressed-gold: inset 4px 4px 8px rgba(184, 134, 11, 0.3), inset -4px -4px 8px #FFFFFF;
+  --shadow-neo-flat-gold: 6px 6px 12px rgba(184, 134, 11, 0.25), -6px -6px 12px rgba(255, 255, 255, 0.9);
+  --shadow-neo-pressed-gold: inset 4px 4px 8px rgba(184, 134, 11, 0.3), inset -4px -4px 8px rgba(255, 255, 255, 0.9);
 }
 
 /* Custom styles and smooth scroll */
@@ -117,3 +117,14 @@ body {
   box-shadow: var(--shadow-neo-flat-sm);
   border-color: var(--color-brand-gold);
 }
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-none {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+

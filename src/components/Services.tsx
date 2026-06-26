@@ -106,23 +106,25 @@ export default function Services() {
             </p>
           </div>
 
-          {/* Filtering buttons with Neumorphic flat/pressed states */}
-          <div className="flex flex-wrap items-center justify-center gap-3 mb-8">
-            {categories.map((cat) => (
-              <button
-                key={cat.id}
-                onClick={() => setActiveCategory(cat.id)}
-                aria-label={`Filtrar comodidades por ${cat.label}`}
-                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all duration-300 focus:outline-none ${
-                  activeCategory === cat.id
-                    ? "btn-neo-pressed text-brand-gold border-brand-gold/30"
-                    : "btn-neo-flat text-brand-dark/80"
-                }`}
-              >
-                {cat.icon}
-                <span>{cat.label}</span>
-              </button>
-            ))}
+          {/* Filtering buttons with horizontal scrolling on mobile and centered layout on desktop */}
+          <div className="w-full overflow-x-auto scrollbar-none mb-8 -mx-4 px-4 sm:mx-0 sm:px-0">
+            <div className="flex items-center sm:justify-center gap-2.5 min-w-max sm:min-w-0 pb-1 sm:pb-0">
+              {categories.map((cat) => (
+                <button
+                  key={cat.id}
+                  onClick={() => setActiveCategory(cat.id)}
+                  aria-label={`Filtrar comodidades por ${cat.label}`}
+                  className={`flex items-center gap-2 px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-medium transition-all duration-300 focus:outline-none whitespace-nowrap select-none ${
+                    activeCategory === cat.id
+                      ? "btn-neo-pressed text-brand-gold border-brand-gold/30 ring-1 ring-brand-gold/10"
+                      : "btn-neo-flat text-brand-dark/80"
+                  }`}
+                >
+                  {cat.icon}
+                  <span>{cat.label}</span>
+                </button>
+              ))}
+            </div>
           </div>
 
           {/* Display grid */}
@@ -138,12 +140,12 @@ export default function Services() {
               return (
                 <div
                   key={item.id}
-                  className="flex items-center gap-3 p-4 rounded-xl bg-brand-card/45 border border-white/30 hover:bg-brand-card transition-all"
+                  className="flex items-start gap-3 p-3.5 sm:p-4 rounded-xl bg-brand-card/45 border border-white/30 hover:bg-brand-card transition-all"
                 >
-                  <div className="w-8 h-8 rounded-lg bg-brand-bg shadow-sm flex items-center justify-center flex-shrink-0">
+                  <div className="w-8 h-8 rounded-lg bg-brand-bg shadow-sm flex items-center justify-center flex-shrink-0 mt-0.5">
                     {icon}
                   </div>
-                  <span className="text-xs sm:text-sm text-brand-dark/85 font-medium leading-tight">
+                  <span className="text-xs sm:text-sm text-brand-dark/85 font-medium leading-tight pt-1">
                     {item.label}
                   </span>
                 </div>

@@ -10,7 +10,7 @@ export const GALLERY_IMAGES: GalleryImage[] = [
   },
   {
     id: "g2",
-    url: "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGwmJ0t-_F_H9Nw1nh02A9-L0YWUlZzjQYBm4zipMg2p1XSrBPlfzTj7CRFieYfOEbhHT2UmU3Wm_hdkrPv_zkvosjjcnNMhw1MLOpmriqUP1KCVpaAz1qWFksinXqPMH1vhts=w1000-h1000-k-no",
+    url: "https://lh3.googleusercontent.com/gps-cs-s/APNQkAGwmJ0t-_F_H9Nw1nh029-L0YWUlZzjQYBm4zipMg2p1XSrBPlfzTj7CRFieYfOEbhHT2UmU3Wm_hdkrPv_zkvosjjcnNMhw1MLOpmriqUP1KCVpaAz1qWFksinXqPMH1vhts=w1000-h1000-k-no",
     alt: "Interior do consultório da Psicóloga Lidiane Rabelo - Divã de atendimento e ambiente terapêutico acolhedor"
   },
   {
